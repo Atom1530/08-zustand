@@ -20,6 +20,15 @@ export default function Header() {
               Notes
             </Link>
           </li>
+          <li>
+            <Link
+              href="/notes/action/create"
+              className={css.navigationLink}
+              rel="noopener noreferrer"
+            >
+              Create note
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>

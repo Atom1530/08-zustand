@@ -9,8 +9,8 @@ import { toast } from 'react-hot-toast';
 import { fetchNotes } from '@/lib/api';
 import NoteList from '@/components/NoteList/NoteList';
 import SearchBox from '@/components/SearchBox/SearchBox';
-import Modal from '@/components/Modal/Modal';
-import NoteForm from '@/components/NoteForm/NoteForm';
+// import Modal from '@/components/Modal/Modal';
+// import NoteForm from '@/components/NoteForm/NoteForm';
 import Pagination from '@/components/Pagination/Pagination';
 import css from './Notes.module.css';
 import { NoteTag } from '@/types/note';
@@ -22,7 +22,7 @@ interface Props {
 export default function NotesClient({ initialTag }: Props) {
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
   const tag = initialTag;
 
   const handleSearch = useDebouncedCallback((value: string) => {
@@ -57,9 +57,12 @@ export default function NotesClient({ initialTag }: Props) {
             onPageChange={(p) => !isFetching && setPage(p)}
           />
         )}
-        <button className={css.button} onClick={() => setIsOpen(true)}>
+        {/* <button
+          className={css.button}
+          onClick={() => redirect('/notes/action/create', (target = '_blank'))}
+        >
           Create note +
-        </button>
+        </button> */}
       </header>
 
       {!isLoading && isFetching && (
@@ -72,11 +75,11 @@ export default function NotesClient({ initialTag }: Props) {
 
       {notes.length > 0 && <NoteList notes={notes} />}
 
-      {isOpen && (
+      {/* {isOpen && (
         <Modal onClose={() => setIsOpen(false)}>
           <NoteForm onCancel={() => setIsOpen(false)} />
         </Modal>
-      )}
+      )} */}
     </div>
   );
 }
