@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `NoteHub`,
     description: 'The best note-making app',
-    url: `https://notehub.com/notes/fillter/all`,
+    url: `https://notehub.com/`,
     siteName: 'NoteHub',
     images: [
       {

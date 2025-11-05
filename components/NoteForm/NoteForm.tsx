@@ -8,10 +8,12 @@ import type { NoteCreateInput } from '../../types/note';
 import { NOTES_TAGS } from '@/lib/constants';
 import { useNoteDraft } from '@/lib/store/noteStore';
 import { ChangeEvent } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function NoteForm() {
   const { draft, setDraft, clearDraft } = useNoteDraft();
   const qc = useQueryClient();
+  const router = useRouter();
 
   const createMut = useMutation({
     mutationFn: (values: NoteCreateInput) => createNote(values),
@@ -19,6 +21,7 @@ export default function NoteForm() {
       clearDraft();
       qc.invalidateQueries({ queryKey: ['notes'] });
       toast.success('Note created');
+      router.push('/notes/filter/all');
     },
     onError: () => toast.error('Failed to create note'),
   });
@@ -47,7 +50,7 @@ export default function NoteForm() {
               id="title"
               name="title"
               className={css.input}
-              defaultValue={draft.title}
+              value={draft.title}
               onChange={handleChange}
               required
             />
@@ -59,7 +62,7 @@ export default function NoteForm() {
               id="content"
               name="content"
               className={css.textarea}
-              defaultValue={draft.content}
+              value={draft.content}
               onChange={handleChange}
             />
           </div>
@@ -82,7 +85,7 @@ export default function NoteForm() {
           </div>
 
           <div className={css.actions}>
-            <button type="button" className={css.cancelButton} onClick={() => history.back()}>
+            <button type="button" className={css.cancelButton} onClick={() => router.back()}>
               Cancel
             </button>
             <button type="submit" className={css.submitButton} disabled={createMut.isPending}>

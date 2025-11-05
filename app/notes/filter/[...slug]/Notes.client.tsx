@@ -14,6 +14,7 @@ import SearchBox from '@/components/SearchBox/SearchBox';
 import Pagination from '@/components/Pagination/Pagination';
 import css from './Notes.module.css';
 import { NoteTag } from '@/types/note';
+import Link from 'next/link';
 
 interface Props {
   initialTag?: NoteTag;
@@ -57,12 +58,9 @@ export default function NotesClient({ initialTag }: Props) {
             onPageChange={(p) => !isFetching && setPage(p)}
           />
         )}
-        {/* <button
-          className={css.button}
-          onClick={() => redirect('/notes/action/create', (target = '_blank'))}
-        >
+        <Link href="/notes/action/create" className={css.button}>
           Create note +
-        </button> */}
+        </Link>
       </header>
 
       {!isLoading && isFetching && (

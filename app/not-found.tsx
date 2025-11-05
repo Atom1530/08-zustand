@@ -1,8 +1,11 @@
 // app/not-found.tsx
+import type { Metadata } from 'next';
+
 export const metadata = {
   title: '404 — Page Not Found | NoteHub',
   description: 'This page does not exist or may have been moved.',
   url: 'https://notehub.com/404',
+
   openGraph: {
     title: '404 — Page Not Found | NoteHub',
     description: 'This page does not exist or may have been moved.',
@@ -16,7 +19,7 @@ export const metadata = {
       },
     ],
   },
-};
+} as Metadata;
 
 export default function NotFound() {
   return (
