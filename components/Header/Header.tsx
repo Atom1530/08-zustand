@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import css from './Header.module.css';
+import AuthNavigation from '@/components/AuthNavigation/AuthNavigation';
 
 export default function Header() {
   return (
@@ -20,15 +21,8 @@ export default function Header() {
               Notes
             </Link>
           </li>
-          <li>
-            <Link
-              href="/notes/action/create"
-              className={css.navigationLink}
-              rel="noopener noreferrer"
-            >
-              Create note
-            </Link>
-          </li>
+
+          <AuthNavigation />
         </ul>
       </nav>
     </header>
